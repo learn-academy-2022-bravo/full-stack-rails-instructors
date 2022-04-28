@@ -19,14 +19,17 @@ Setup and Read Functionality:
 READ
 
 Index - all the things
+
 Controller
-```
+```ruby
 def index
   @herbs = Herb.all
 end
 ```
+
 Route - `get 'herb' => 'herb#index'`
-View - index.html.erb
+
+View - app/views/herb/index.html.erb
 ```
 <h1>Herb Garden App</h1>
 
@@ -40,15 +43,17 @@ View - index.html.erb
 ```
 
 Show - one thing
+
 Controller
-```
+```ruby
 def show
   @herb = Herb.find(params[:id])
 end
 ```
 
 Route - `get 'herb/:id' => 'herb#show'`
-View - show.html.erb
+
+View - app/views/herb/show.html.erb
 
 ```
 <p>
@@ -61,9 +66,11 @@ View - show.html.erb
 
 CREATE
 - git checkout -b create-functionality
-New
+
+New - create a form
+
 Controller
-```
+```ruby
 def new
   @herb = Herb.new
 end
@@ -71,7 +78,7 @@ end
 
 Route - `get 'herb/new' => 'herb#new', as: 'new_herb'`
 
-View
+View - app/views/herb/new.html.erb
 ```
 <%= form_with model: @herb do |form| %>
 
@@ -88,9 +95,10 @@ View
 <% end %>
 ```
 
-Create
+Create - add content to the database
+
 Controller
-```
+```ruby
 def create
   @herb = Herb.create(herb_params)
 end
@@ -104,6 +112,7 @@ end
 ```
 
 Route - `post 'herb' => 'herb#create'`
+
 View - button on form and redirect in controller method
 
 ---
