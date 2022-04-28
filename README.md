@@ -60,11 +60,53 @@ View - show.html.erb
 ```
 
 CREATE
+- git checkout -b create-functionality
 New
-Create
+Controller
+```
+def new
+  @herb = Herb.new
+end
+```
 
+Route - `get 'herb/new' => 'herb#new', as: 'new_herb'`
+
+View
+```
+<%= form_with model: @herb do |form| %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br />
+  <br />
+  <%= form.label :watered %>
+  <%= form.text_field :watered %>
+  <br />
+  <br />
+  <%= form.submit "Add Herb" %>
+
+<% end %>
+```
+
+Create
+Controller
+```
+def create
+  @herb = Herb.create(herb_params)
+end
+
+# anything below this line can only be accessed inside the scope of this class
+private
+# strong params:
+def herb_params
+  params.require(:herb).permit(:name, :watered)
+end
+```
+
+Route - `post 'herb' => 'herb#create'`
+View - button on form and redirect in controller method
 
 ---
-CRUD - create, read, update, delete
-http verbs - get, post, put, patch, delete
-RESTful routes - index, show, new, create, edit, update, destroy
+- CRUD - create, read, update, delete
+- http verbs - get, post, put, patch, delete
+- RESTful routes - index, show, new, create, edit, update, destroy
