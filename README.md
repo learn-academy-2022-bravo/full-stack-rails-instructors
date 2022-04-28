@@ -16,6 +16,8 @@ Setup and Read Functionality:
 - create a controller: rails g controller Herb
 - `<%= %>`
 
+READ
+
 Index - all the things
 Controller
 ```
@@ -49,11 +51,20 @@ Route - `get 'herb/:id' => 'herb#show'`
 View - show.html.erb
 
 ```
-<ul>
-  <% @herbs.each do |herb| %>
-    <li>
-      <%= link_to herb.name, herb_path(herb) %>
-    </li>
-  <% end %>
-</ul>
+<p>
+  Name: <%= @herb.name %>
+</p>
+<p>
+  Is watered? <%= @herb.watered %>
+</p>
 ```
+
+CREATE
+New
+Create
+
+
+---
+CRUD - create, read, update, delete
+http verbs - get, post, put, patch, delete
+RESTful routes - index, show, new, create, edit, update, destroy
